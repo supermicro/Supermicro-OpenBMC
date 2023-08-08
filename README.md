@@ -1,1 +1,1 @@
-# Supermicro-Open-Source-Solution
+# Supermicro-OpenBMC
