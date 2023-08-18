@@ -1,0 +1,8 @@
+#!/bin/sh
+while read runner; do
+  oldpath=`pwd` >/dev/null
+  cd bin
+  echo Testing $runner
+  ./$runner -ignore $oldpath/cppignore.lnx -all
+  cd $oldpath >/dev/null
+done < testrunners

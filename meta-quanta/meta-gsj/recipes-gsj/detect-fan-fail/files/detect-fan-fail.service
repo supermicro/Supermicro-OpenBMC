@@ -1,0 +1,10 @@
+[Unit]
+Description=Detect Fan Fail Manager
+After=phosphor-pid-control.service
+
+[Service]
+ExecStart=/usr/bin/detect-fan-fail.sh
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,7 @@
+owners:
+- joel@jms.id.au
+
+matchers:
+- partial_regex: recipes-bsp/u-boot
+  reviewers:
+   - zweiss@equinix.com

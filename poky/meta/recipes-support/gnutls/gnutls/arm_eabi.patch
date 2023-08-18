@@ -1,0 +1,30 @@
+From 911213d9f72ddce468322d22d223127b93964409 Mon Sep 17 00:00:00 2001
+From: Joe Slater <jslater@windriver.com>
+Date: Wed, 25 Jan 2017 13:52:59 -0800
+Subject: [PATCH] gnutls: account for ARM_EABI
+
+Certain syscall's are not availabe for arm-eabi, so we eliminate
+reference to them.
+
+Upstream-Status: Pending
+
+Signed-off-by: Joe Slater <jslater@windriver.com>
+
+---
+ tests/seccomp.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/tests/seccomp.c b/tests/seccomp.c
+index a3148fe..443bc5f 100644
+--- a/tests/seccomp.c
++++ b/tests/seccomp.c
+@@ -52,7 +52,9 @@ int disable_system_calls(void)
+ 
+ 	ADD_SYSCALL(nanosleep, 0);
+ 	ADD_SYSCALL(clock_nanosleep, 0);
++#if ! defined(__ARM_EABI__)
+ 	ADD_SYSCALL(time, 0);
++#endif
+ 	ADD_SYSCALL(getpid, 0);
+ 	ADD_SYSCALL(gettimeofday, 0);
+ # if defined(HAVE_CLOCK_GETTIME)
